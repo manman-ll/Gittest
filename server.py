@@ -7,7 +7,7 @@ from manage import DBManage
 
 
 sk = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-ip_port = ("192.168.1.112", 8080)
+ip_port = ("192.168.1.104", 8080)
 sk.bind(ip_port)
 sk.listen(5)
 i = 0
@@ -33,17 +33,13 @@ while True:
         #fp = open('./receive/' + str(fn), 'wb')
         fp = open(str(fn), 'wb') 
         while not recvd_size == filesize:
-            if filesize - recvd_size > 60:
-                    data,address_client = conn.recvfrom(60)
+            if filesize - recvd_size > 1024:
+                    data,address_client = conn.recvfrom(1024)
                     recvd_size += len(data)
-                    print(len(data))
             else:
                 data,address_client = conn.recvfrom(filesize - recvd_size)
                 recvd_size = filesize
             fp.write(data)
-            #i+=1
-            #print(len(data))
-            #print(i)
         fp.close()   
         print ('end receive...') 
         DBManage.read_txt(str(fn))

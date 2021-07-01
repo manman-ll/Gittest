@@ -1,7 +1,7 @@
 import  socket
 import  struct
 import  os
-ip = "192.168.1.105"
+ip = "192.168.1.104"
 port = 8080
 
 
