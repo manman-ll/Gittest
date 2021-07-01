@@ -1,6 +1,4 @@
 import socket
-import random
-import  pymongo
 import  struct
 import  os
 from manage import DBManage
@@ -42,6 +40,6 @@ while True:
             fp.write(data)
         fp.close()   
         print ('end receive...') 
-        DBManage.read_txt(str(fn))
+        #BManage.read_txt(str(fn))
         os.remove(str(fn))
         conn.close()

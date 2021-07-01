@@ -1,6 +1,7 @@
 import  socket
 import  struct
 import  os
+from manage import DBManage
 ip = "192.168.1.104"
 port = 8080
 
@@ -28,6 +29,7 @@ while True:
             fhead = struct.pack('128sl',os.path.basename(filepath_current).encode('utf-8'), os.stat(filepath_current).st_size)
             # 发送文件名称与文件大小
             client.send(fhead)
+            DBManage.read_txt(os.path.join(filepath,files))
             # 将传输文件以二进制的形式分多次上传至服务器
             with open(os.path.join(filepath,files),"rb") as fp:
                 while True:

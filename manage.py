@@ -11,7 +11,6 @@ class Manage:
         self.Client = pymongo.MongoClient(IP, port)
         self.DB = self.Client[db]
         self.Col = self.DB[col]
-
     # 读txt
     def read_txt(self, filename):
         sample = []
@@ -22,6 +21,7 @@ class Manage:
         
         with open(filename, encoding='utf-8') as f:
             content = f.readlines()
+            print("length content: %d"%len(content))
         
         time_l = []
         sample_l = []
